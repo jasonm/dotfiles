@@ -13,6 +13,7 @@ alias be="bundle exec"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias ...='../..'
+alias gadd="git add . ; git add -u . ; git st"
 
 alias -g G='| grep'
 alias -g M='| less'
