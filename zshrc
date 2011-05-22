@@ -52,3 +52,7 @@ export EYRC=./.eyrc
 # automatically pushd
 setopt auto_pushd
 export dirstacksize=5
+
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+rvm use 1.9.2
