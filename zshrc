@@ -53,6 +53,13 @@ export EYRC=./.eyrc
 setopt auto_pushd
 export dirstacksize=5
 
+# paths
+export PATH=.:$PATH
+export PATH=~/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
+export NODE_PATH=/usr/local/lib/node:$NODE_PATH
+export PATH=$NODE_PATH:$PATH
+
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 rvm use 1.9.2
