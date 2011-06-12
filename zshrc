@@ -60,6 +60,11 @@ export PATH=/usr/local/sbin:$PATH
 export NODE_PATH=/usr/local/lib/node:$NODE_PATH
 export PATH=$NODE_PATH:$PATH
 
+# imagemagick
+export MAGICK_HOME="$HOME/ImageMagick-6.5.8"
+export PATH="$MAGICK_HOME/bin:$PATH"
+export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"
+
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 rvm use 1.9.2
