@@ -83,11 +83,11 @@ let g:html_indent_tags = 'li\|p'
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>e :e <C-R>=escape(expand("%:p:h"), ' ') . "/" <CR>
 
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>te :tabe <C-R>=escape(expand("%:p:h"), ' ') . "/" <CR>
 
 " Maps autocomplete to tab
 imap <Tab> <C-P>
