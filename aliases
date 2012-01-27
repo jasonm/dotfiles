@@ -22,3 +22,5 @@ alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
 
 alias chromedev='open /Applications/Google\ Chrome.app --args --disable-web-security'
+
+alias k='kill -9 %1'
