@@ -71,6 +71,13 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
 autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
 
+" Javascript navigation commands
+autocmd User Rails Rnavcommand Jmodel app/assets/javascripts/models -glob=**/* -suffix=.js
+autocmd User Rails Rnavcommand Jcontroller app/assets/javascripts/controllers -glob=**/* -suffix=.js
+autocmd User Rails Rnavcommand Jview app/assets/javascripts/views -glob=**/* -suffix=.js
+autocmd User Rails Rnavcommand Jcollection app/assets/javascripts/collections -glob=**/* -suffix=.js
+autocmd User Rails Rnavcommand Jtemplate app/assets/templates -glob=**/* -suffix=.jst
+
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
