@@ -19,3 +19,5 @@ setopt prompt_subst
 # prompt
 export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}] '
 
+# SELENIUM_FIREFOX_BIN_PATH
+export SELENIUM_FIREFOX_BIN_PATH='/Applications/Firefox-7/Firefox.app/Contents/MacOS/firefox-bin'
