@@ -95,11 +95,27 @@ let g:html_indent_tags = 'li\|p'
 map <Leader>e :e <C-R>=escape(expand("%:p:h"), ' ') . "/" <CR>
 
 " Opens a tab edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>t
+" Normal mode: <Leader>te
 map <Leader>te :tabe <C-R>=escape(expand("%:p:h"), ' ') . "/" <CR>
+
+" Opens a vsplit command with the path of the currently edited file filled in
+" Normal mode: <Leader>ve
+map <Leader>vs :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 
 " Maps autocomplete to tab
 imap <Tab> <C-P>
 
 " No Help, please
 nmap <F1> <Esc>
+
+
+" rspec into iterm
+" function! ZRSpec(args)
+"  execute ":silent !run-in-iterm 'zeus rspec -fd " . a:args . " %'"
+" endfunction
+" 
+" nmap <CR> :call ZRSpec("-l " . <C-r>=line('.')<CR>)<CR>
+" nmap <Leader>ta :call ZRSpec("")<CR>
+
+" http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
+source ~/.vim/regional-highlighting.vim
