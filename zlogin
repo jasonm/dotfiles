@@ -21,3 +21,12 @@ export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$f
 
 # SELENIUM_FIREFOX_BIN_PATH
 export SELENIUM_FIREFOX_BIN_PATH='/Applications/Firefox-7/Firefox.app/Contents/MacOS/firefox-bin'
+
+export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
+
+export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.ec2/pk-*.pem | /usr/bin/head -1)"
+export EC2_CERT="$(/bin/ls "$HOME"/.ec2/cert-*.pem | /usr/bin/head -1)"
+export EC2_AMITOOL_HOME="/usr/local/Library/LinkedKegs/ec2-ami-tools/jars"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
