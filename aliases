@@ -1,26 +1,20 @@
-alias migrate="rake db:migrate db:test:prepare"
-alias remigrate="rake db:migrate && rake db:migrate:redo && rake db:schema:dump db:test:prepare"
-alias remongrate="rake mongoid:migrate && rake mongoid:migrate:redo"
 alias g="git"
-alias s="bundle exec rspec"
-alias cuc="bundle exec cucumber"
-alias gi="gem install"
-alias giv="gem install -v"
-alias gci="git pull --rebase && rake && git push"
+alias s="git status"
+alias ds="git diff --cached"
 alias grc="git rebase --continue"
-alias tlf="tail -f"
 alias b="bundle"
 alias be="bundle exec"
-alias ln='ln -v'
 alias mkdir='mkdir -p'
-alias ...='../..'
-alias gadd="git add . ; git add -u . ; git st"
 
-alias -g G='| grep'
-alias -g M='| less'
-alias -g L='| wc -l'
-alias -g ONE="| awk '{ print \$1}'"
+alias ...='../..'
+alias ....='../../..'
+alias .....='../../../..'
+alias ......='../../../../..'
+
+alias gadd="git add . ; git add -u . ; git st"
 
 alias chromedev='open /Applications/Google\ Chrome.app --args --disable-web-security'
 
 alias k='kill -9 %1'
+
+alias ll='ls -lAh'
