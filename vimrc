@@ -119,3 +119,43 @@ nmap <F1> <Esc>
 
 " http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
 source ~/.vim/regional-highlighting.vim
+
+" fswitch.vim
+" https://github.com/derekwyatt/vim-fswitch/blob/master/doc/fswitch.txt
+  augroup picassoviews
+    au!
+    au BufEnter *.js let b:fswitchdst  = 'hbs'
+    au BufEnter *.js let b:fswitchlocs = 'reg:|client/app/javascripts/app/views|client/app/templates|'
+    au BufEnter *.js let b:fswitchfnames = '/_view$//'
+
+    au BufEnter *.hbs let b:fswitchdst  = 'js'
+    au BufEnter *.hbs let b:fswitchlocs = 'reg:|client/app/templates|client/app/javascripts/app/views|'
+    au BufEnter *.hbs let b:fswitchfnames = '/$/_view/'
+  augroup END
+
+  "  Switch to the file and load it into the current window
+  nmap <silent> <Leader>of :FSHere<cr>
+
+  "  Switch to the file and load it into the window on the right
+  nmap <silent> <Leader>ol :FSRight<cr>
+
+  "  Switch to the file and load it into a new window split on the right
+  nmap <silent> <Leader>oL :FSSplitRight<cr>
+
+  "  Switch to the file and load it into the window on the left
+  nmap <silent> <Leader>oh :FSLeft<cr>
+
+  "  Switch to the file and load it into a new window split on the left
+  nmap <silent> <Leader>oH :FSSplitLeft<cr>
+
+  "  Switch to the file and load it into the window above
+  nmap <silent> <Leader>ok :FSAbove<cr>
+
+  "  Switch to the file and load it into a new window split above
+  nmap <silent> <Leader>oK :FSSplitAbove<cr>
+
+  "  Switch to the file and load it into the window below
+  nmap <silent> <Leader>oj :FSBelow<cr>
+
+  "  Switch to the file and load it into a new window split below
+  nmap <silent> <Leader>oJ :FSSplitBelow<cr>
