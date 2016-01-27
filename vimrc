@@ -7,6 +7,11 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 
+" backslash, space, or comma for leader
+let mapleader = '\'
+nmap <space> \
+nmap , \
+
 call pathogen#infect() 
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -36,6 +41,8 @@ augroup END
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
@@ -102,12 +109,8 @@ map <Leader>te :tabe <C-R>=escape(expand("%:p:h"), ' ') . "/" <CR>
 " Normal mode: <Leader>ve
 map <Leader>vs :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 
-" Maps autocomplete to tab
-imap <Tab> <C-P>
-
 " No Help, please
 nmap <F1> <Esc>
-
 
 " rspec into iterm
 " function! ZRSpec(args)
@@ -119,6 +122,26 @@ nmap <F1> <Esc>
 
 " http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
 source ~/.vim/regional-highlighting.vim
+
+" https://github.com/Lokaltog/vim-powerline
+let g:Powerline_symbols = 'fancy'
+
+" python - TODO put in correct place
+autocmd BufRead *.py set ai tabstop=4 shiftwidth=4
+
+" Disable python folding
+let g:pymode_folding = 0
+let g:pymode_lint = 0
+
+
+set wildignore=*.pyc,*node_modules/**
+
+map <C-n> :NERDTreeToggle<CR>
+
+au BufRead,BufNewFile *.md set filetype=markdown
+
+" Get bash aliases, e.g. !gist == !gist --private
+let $BASH_ENV = "~/.aliases"
 
 " fswitch.vim
 " https://github.com/derekwyatt/vim-fswitch/blob/master/doc/fswitch.txt
@@ -159,3 +182,23 @@ source ~/.vim/regional-highlighting.vim
 
   "  Switch to the file and load it into a new window split below
   nmap <silent> <Leader>oJ :FSSplitBelow<cr>
+
+iab ipdb import ipdb ; ipdb.set_trace()
+iab pdb import pdb ; pdb.set_trace()
+iab pudb import pudb ; pu.db
+
+" Qargs from http://vimcasts.org/episodes/project-wide-find-and-replace/
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+function! QuickfixFilenames()
+  " Building a hash ensures we get each buffer only once
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+
+let g:jedi#show_call_signatures = 0
+let g:jedi#completions_enabled = 0
+
+autocmd FileType html setlocal shiftwidth=2 tabstop=2

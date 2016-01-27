@@ -1,0 +1,23 @@
+snippet desc "describe() block" !b
+describe("${1:description}", function() {
+  ${2}
+});
+endsnippet
+
+snippet it "it() block" !b
+it("${1:description}", function() {
+  ${2}
+});
+endsnippet
+
+snippet before "beforeEach() block" !b
+beforeEach(function() {
+  ${1}
+});
+endsnippet
+
+snippet after "afterEach() block" !b
+afterEach(function() {
+  ${1}
+});
+endsnippet
