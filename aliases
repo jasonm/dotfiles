@@ -1,6 +1,10 @@
+shopt -s expand_aliases
+
 alias g="git"
+complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
 alias s="git status"
-alias ds="git diff --cached"
+alias d="git diff | cdiff -s -w 0"
+alias ds="git diff --cached | cdiff -s -w 0"
 alias grc="git rebase --continue"
 alias b="bundle"
 alias be="bundle exec"
@@ -11,10 +15,36 @@ alias ....='../../..'
 alias .....='../../../..'
 alias ......='../../../../..'
 
-alias gadd="git add . ; git add -u . ; git st"
+alias gadd="git add -A . ; git st"
 
 alias chromedev='open /Applications/Google\ Chrome.app --args --disable-web-security'
 
 alias k='kill -9 %1'
 
 alias ll='ls -lAh'
+
+alias gp='cd ~/dev/picasso'
+alias gs='cd ~/dev/schools'
+
+alias gvenv='cd $VIRTUAL_ENV/lib/python2.7/site-packages'
+alias ipy='ipython'
+
+alias rmpyc='find . -iname "*.pyc" -delete'
+
+alias redb='yes | mysqladmin -u root drop picasso; mysqladmin -u root create picasso ; server/manage.py syncdb ; server/manage.py migrate ; server/manage.py seed && yes | mysqladmin -u root drop picasso_integration; mysqladmin -u root create picasso_integration ; DJANGO_SETTINGS_MODULE=config.environments.integration server/manage.py syncdb ; DJANGO_SETTINGS_MODULE=config.environments.integration server/manage.py migrate ; DJANGO_SETTINGS_MODULE=config.environments.integration server/manage.py seed'
+
+
+alias gist='gist --private'
+
+# python and ctags
+# http://stackoverflow.com/questions/10362085/ctags-with-taglist-in-vim-and-python-virtualenv
+# http://stackoverflow.com/questions/10361714/tools-to-help-developers-reading-class-hierarchy-faster
+# http://www.held.org.il/blog/2011/02/configuring-ctags-for-python-and-vim/
+alias ptags='ctags -R --python-kinds=-i apps/ $VIRTUAL_ENV'
+
+# overridden by ~/bin/sp which accepts a remote hostname to SSH into before running shell_plus
+# alias sp='./manage.py shell_plus --ipython'
+
+alias m='./manage.py'
+alias ymm='yes|./manage.py migrate 2>&1'
+# alias ymm='yes|./manage.py migrate 2>&1|lolcat'
