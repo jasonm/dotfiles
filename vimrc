@@ -119,3 +119,21 @@ nmap <F1> <Esc>
 
 " http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
 source ~/.vim/regional-highlighting.vim
+
+" http://vim.wikia.com/wiki/Remove_unwanted_spaces#Automatically_removing_all_trailing_whitespace
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" ~/.vim/bundle/python-mode
+let g:pymode_folding = 0
+
+
+" https://github.com/kien/rainbow_parentheses.vim
+au VimEnter * RainbowParenthesesActivate
+au Syntax * RainbowParenthesesLoadRound
+
+" Also let space be leader, easy on the fingers
+nmap <Space> <leader>
+
+" Try this for a while
+let g:jedi#completions_enabled = 0
+
