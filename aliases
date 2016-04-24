@@ -2,7 +2,11 @@ alias migrate="rake db:migrate db:test:prepare"
 alias remigrate="rake db:migrate && rake db:migrate:redo && rake db:schema:dump db:test:prepare"
 alias remongrate="rake mongoid:migrate && rake mongoid:migrate:redo"
 alias g="git"
-alias s="bundle exec rspec"
+alias s="git status"
+alias d="git diff"
+alias ds="git diff --staged"
+alias bi="bundle install"
+alias bil="bundle install --local"
 alias cuc="bundle exec cucumber"
 alias gi="gem install"
 alias giv="gem install -v"
@@ -14,7 +18,7 @@ alias be="bundle exec"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias ...='../..'
-alias gadd="git add . ; git add -u . ; git st"
+alias gadd="git add --all . ; git st"
 
 alias -g G='| grep'
 alias -g M='| less'
@@ -24,3 +28,23 @@ alias -g ONE="| awk '{ print \$1}'"
 alias chromedev='open /Applications/Google\ Chrome.app --args --disable-web-security'
 
 alias k='kill -9 %1'
+
+alias tk='tail -n 1000 $1'
+alias tkf='tail -f -n 1000 $1'
+
+z() { zeus $*; stty sane }
+
+alias zcuc='zeus cucumber'
+
+alias nripc='ssh nrip-1-125 cd www/current && RAILS_ENV=production bundle exec rails console'
+
+alias gl='cd ~/dev/learnist'
+
+alias kc='knife cluster'
+
+alias gp="cd ~/dev/picasso && workon picasso && echo 'workon picasso'"
+alias ipy='ipython'
+alias gvenv='~/.virtualenvs/schools/lib/python2.7/site-packages'
+
+# http://stackoverflow.com/questions/11908746/mit-scheme-repl-with-command-line-history-and-tab-completion
+alias mit-scheme='rlwrap -r -c -f "$HOME"/.mit-scheme-history scheme'
