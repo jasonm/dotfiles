@@ -23,6 +23,7 @@ bindkey jj vi-cmd-mode
 
 # use incremental search
 bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward
 
 # add some readline keys back
 bindkey "^A" beginning-of-line
@@ -46,6 +47,9 @@ setopt histignoredups
 # keep more history
 export HISTSIZE=1000
 
+export SAVEHIST=10000
+export HISTFILE=~/.zsh_history
+
 # look for ey config in project dirs
 export EYRC=./.eyrc
 
@@ -57,14 +61,50 @@ export dirstacksize=5
 export PATH=.:$PATH
 export PATH=~/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
-export NODE_PATH=/usr/local/lib/node:$NODE_PATH
-export PATH=$NODE_PATH:$PATH
+export PATH=/usr/local/share/npm/bin:$PATH
 
-# imagemagick
-export MAGICK_HOME="$HOME/ImageMagick-6.5.8"
-export PATH="$MAGICK_HOME/bin:$PATH"
-export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"
+# from `brew info docbook`
+export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
+
+# Setting up VirtualEnv[Wrapper], http://docwhat.org/2011/06/virtualenv-on-os-x/
+# Commented out after 10.8 OSX upgrade since python maybe changed during 10.7.5 -> 10.8.2 upgrade
+# export WORKON_HOME=$HOME/.virtualenvs
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
+# export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=''
+# export PIP_VIRTUALENV_BASE=$WORKON_HOME
+# export PIP_RESPECT_VIRTUALENV=true
+#  
+# if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+#     source /usr/local/bin/virtualenvwrapper.sh
+# else
+#     echo "WARNING: Can't find virtualenvwrapper.sh"
+# fi
+
+export JAVA_HOME="$(/usr/libexec/java_home)"
+
+export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
+
+# idk use a plugin manager or something someday jeez
+source ~/.zsh/plugins/zle_vi_visual.zsh
+
+# how you like me now, rails startup time
+rails_migration() {
+  filename="db/migrate/`date +%Y%m%d%H%M%S`_$1.rb"
+  classname=$(ruby -e "puts '$1'.split('_').map{|e| e.capitalize}.join")
+  touch $filename
+  echo "class $classname < ActiveRecord::Migration" >> $filename
+  echo "  def self.up"                              >> $filename
+  echo "  end"                                      >> $filename
+  echo ""                                           >> $filename
+  echo "  def self.down"                            >> $filename
+  echo "  end"                                      >> $filename
+  echo "end"                                        >> $filename
+}
+
+export PATH=$PATH:$HOME/dev/storm/distro/storm-0.8.1/bin
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-rvm use 1.9.2
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
