@@ -9,6 +9,9 @@ export VIRTUAL_ENV_DISABLE_PROMPT="true"
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
+# No pyc
+export PYTHONDONTWRITEBYTECODE=True
+
 source ~/.minerva_bash_completions.sh
 
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
@@ -105,8 +108,6 @@ export PATH=~/bin:~/bin/shared:$PATH
 
 export GOPATH=~/dev/gopath
 
-export DOCKER_HOST=tcp://192.168.59.103:2375
-
 source ~/.auto_venv
 
 # brew info awscli
@@ -114,7 +115,7 @@ complete -C aws_completer aws
 
 
 # rando schools stuff to do it live
-export RSA_KEY_2015_FILENAME=rsa_key_2015_production.pub
+# export RSA_KEY_2015_FILENAME=rsa_key_2015_production.pub
 
 # brew info pyenv
 if which pyenv > /dev/null; then
@@ -122,3 +123,12 @@ if which pyenv > /dev/null; then
   # eval "$(pyenv init -)"
   # eval "$(pyenv virtualenv-init -)"
 fi
+
+# From Arthur
+touchd() {
+    for p in "$@"; do
+        _dir="$(dirname -- "$p")"
+        [ -d "$_dir" ] || mkdir -p -- "$_dir"
+        touch -- "$p"
+    done
+}

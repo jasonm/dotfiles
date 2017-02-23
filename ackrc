@@ -25,3 +25,7 @@
 --ignore-dir=apps/commons/js/shims/moxie
 --ignore-dir=packages/gdata
 --ignore-file=is:course_data.sql
+--ignore-dir=dist/js
+--ignore-file=is:highlight.pack.js
+--ignore-file=is:OpportunityFieldHistory_for_tentative_applicant_status.csv
+--ignore-dir=docs/.build

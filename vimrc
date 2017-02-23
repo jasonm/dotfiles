@@ -88,10 +88,10 @@ autocmd User Rails Rnavcommand Jcollection app/assets/javascripts/collections -g
 autocmd User Rails Rnavcommand Jtemplate app/assets/templates -glob=**/* -suffix=.jst
 
 " Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+" nnoremap <Left> :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up> :echoe "Use k"<CR>
+" nnoremap <Down> :echoe "Use j"<CR>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -198,7 +198,11 @@ function! QuickfixFilenames()
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
+" https://github.com/davidhalter/jedi-vim
 let g:jedi#show_call_signatures = 0
 let g:jedi#completions_enabled = 0
 
+
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
+
+

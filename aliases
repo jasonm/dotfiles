@@ -3,8 +3,17 @@ shopt -s expand_aliases
 alias g="git"
 complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
 alias s="git status"
-alias d="git diff | cdiff -s -w 0"
-alias ds="git diff --cached | cdiff -s -w 0"
+
+# git diff
+d() {
+  git diff "$@" | cdiff -s -w 0
+}
+
+# git diff stashed
+ds() {
+  git diff --cached "$@" | cdiff -s -w 0
+}
+
 alias grc="git rebase --continue"
 alias b="bundle"
 alias be="bundle exec"
@@ -48,3 +57,21 @@ alias ptags='ctags -R --python-kinds=-i apps/ $VIRTUAL_ENV'
 alias m='./manage.py'
 alias ymm='yes|./manage.py migrate 2>&1'
 # alias ymm='yes|./manage.py migrate 2>&1|lolcat'
+
+# e.g. sshp free -h
+alias sshp='pssh --inline -H s1p -H s2p -H s3p'
+
+# jan nelson specials
+alias sus='sort | uniq -c | sort -nr'
+
+# docker shortcuts
+alias dc=docker-compose
+alias dm=docker-machine
+
+# fast schools tests from Arthur
+alias mt='DJANGO_SETTINGS_MODULE=config.environments.test USE_SQLITE=1 ./manage.py test --nocapture --nologcapture'
+
+alias mk=minerva-keytool
+
+# tell bc to have precision 20 by default
+alias bc="bc --mathlib"
